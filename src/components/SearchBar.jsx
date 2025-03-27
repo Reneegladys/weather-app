@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getWeatherByCity, getForecastByCoords } from "../services/WeatherService";
+import './SearchBar.css'
 
 const SearchBar = ({ setWeather, setForecast }) => {
   const [city, setCity] = useState("");
