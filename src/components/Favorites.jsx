@@ -1,5 +1,6 @@
 import React from "react";
 import { getWeatherByCity, getForecastByCoords } from "../services/WeatherService";
+import "./Favorites.css";
 
 const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
   
@@ -14,7 +15,6 @@ const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
     }
   };
 
-  
   const removeFavorite = (city) => {
     const updatedFavorites = favorites.filter((fav) => fav !== city);
     setFavorites(updatedFavorites);
@@ -23,13 +23,15 @@ const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
 
   return (
     <div>
-      <h3>Favorites</h3>
-      <ul>
+      <h3 className="favorites-title">Favorites</h3>
+      <ul className="favorites-list">
         {favorites.map((city, index) => (
-          <li key={index}>
-            <button onClick={() => handleFavoriteClick(city)}>{city}</button>
-            <button onClick={() => removeFavorite(city)} style={{ marginLeft: "10px", color: "red" }}>
-              Remove
+          <li key={city} className="favorites-item">
+            <button onClick={() => handleFavoriteClick(city)} className="favorites-button">
+              {city}
+            </button>
+            <button onClick={() => removeFavorite(city)} className="remove-button">
+              ✖
             </button>
           </li>
         ))}

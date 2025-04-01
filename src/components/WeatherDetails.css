@@ -1,0 +1,27 @@
+.weather-details {
+  background: #f4f4f9;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.weather-details h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.weather-details p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 8px 0;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #007bff;
+}

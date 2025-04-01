@@ -4,6 +4,7 @@ import WeatherCard from "./components/WeatherCard";
 import SearchBar from "./components/SearchBar";
 import Forecast from "./components/Forecast";
 import Favorites from "./components/Favorites";
+import './App.css';
 
 const App = () => {
   const [weather, setWeather] = useState(null);
@@ -20,7 +21,6 @@ const App = () => {
     });
   }, []);
 
-  
   const addCurrentLocationToFavorites = () => {
     if (weather && !favorites.includes(weather.name)) {
       const updatedFavorites = [...favorites, weather.name];
@@ -29,7 +29,6 @@ const App = () => {
     }
   };
 
-  
   const removeCurrentLocationFromFavorites = () => {
     if (weather && favorites.includes(weather.name)) {
       const updatedFavorites = favorites.filter(city => city !== weather.name);
@@ -39,21 +38,33 @@ const App = () => {
   };
 
   return (
-    <div>
-      <SearchBar setWeather={setWeather} setForecast={setForecast} />
+    <div className="app-container">
+      <div className="searchbar-container">
+        <SearchBar setWeather={setWeather} setForecast={setForecast} />
+      </div>
+
+      <div className="weather-card-container">
+        {weather && <WeatherCard weather={weather} />}
+      </div>
+
       {weather && (
-        <>
-          <WeatherCard weather={weather} />
-          <button onClick={addCurrentLocationToFavorites} disabled={favorites.includes(weather.name)}>
+        <div className="favorites-buttons">
+          <button onClick={addCurrentLocationToFavorites} disabled={favorites.includes(weather.name)} className="fav-button add">
             Add to Favorites
           </button>
-          <button onClick={removeCurrentLocationFromFavorites} disabled={!favorites.includes(weather.name)}>
+          <button onClick={removeCurrentLocationFromFavorites} disabled={!favorites.includes(weather.name)} className="fav-button remove">
             Remove from Favorites
           </button>
-        </>
+        </div>
       )}
-      {forecast && <Forecast forecast={forecast} />}
-      <Favorites favorites={favorites} setWeather={setWeather} setForecast={setForecast} setFavorites={setFavorites} />
+
+     <div className="favorites-container">
+        <Favorites favorites={favorites} setWeather={setWeather} setForecast={setForecast} setFavorites={setFavorites} />
+        </div>
+
+      <div className="forecast-container">
+        {forecast && <Forecast forecast={forecast} />}
+      </div>
     </div>
   );
 };
