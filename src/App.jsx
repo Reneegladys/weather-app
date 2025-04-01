@@ -21,6 +21,7 @@ const App = () => {
     });
   }, []);
 
+  
   const addCurrentLocationToFavorites = () => {
     if (weather && !favorites.includes(weather.name)) {
       const updatedFavorites = [...favorites, weather.name];
@@ -44,23 +45,11 @@ const App = () => {
       </div>
 
       <div className="weather-card-container">
-        {weather && <WeatherCard weather={weather} />}
+        {weather && <WeatherCard weather={weather} favorites={favorites} addCurrentLocationToFavorites={addCurrentLocationToFavorites} removeCurrentLocationFromFavorites={removeCurrentLocationFromFavorites} />}
+        <div className="favorites-container">
+          <Favorites favorites={favorites} setWeather={setWeather} setForecast={setForecast} setFavorites={setFavorites} />
+        </div>
       </div>
-
-      {weather && (
-        <div className="favorites-buttons">
-          <button onClick={addCurrentLocationToFavorites} disabled={favorites.includes(weather.name)} className="fav-button add">
-            Add to Favorites
-          </button>
-          <button onClick={removeCurrentLocationFromFavorites} disabled={!favorites.includes(weather.name)} className="fav-button remove">
-            Remove from Favorites
-          </button>
-        </div>
-      )}
-
-     <div className="favorites-container">
-        <Favorites favorites={favorites} setWeather={setWeather} setForecast={setForecast} setFavorites={setFavorites} />
-        </div>
 
       <div className="forecast-container">
         {forecast && <Forecast forecast={forecast} />}

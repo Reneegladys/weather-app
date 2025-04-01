@@ -22,7 +22,7 @@ const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
   };
 
   return (
-    <div>
+      <>
       <h3 className="favorites-title">Favorites</h3>
       <ul className="favorites-list">
         {favorites.map((city, index) => (
@@ -36,7 +36,7 @@ const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
           </li>
         ))}
       </ul>
-    </div>
+      </>
   );
 };
 

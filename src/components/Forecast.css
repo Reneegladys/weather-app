@@ -6,14 +6,9 @@
   flex-wrap: wrap;  
   gap: 15px; 
   justify-content: center; 
+  margin-top: 1px;
 }
 
-.forecast h3 {
-  width: 100%;
-  font-size: 1.6rem;
-  margin-bottom: 15px;
-  color: #ffffff;
-}
 
 .forecast-day {
   padding: 10px;

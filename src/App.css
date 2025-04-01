@@ -8,35 +8,34 @@ body, html {
   justify-content: center;
   align-items: center;
 }
-.app-container {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  text-align: center;
-}
 
 .searchbar-container {
   margin-bottom: 20px;
 }
 
 .weather-card-container {
-  margin-top: 20px;
-}
-
-.favorites-container {
-  margin-top: -20px; 
   padding: 10px;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+
+.favorites-container {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-top: auto;
+  width: 100%;
 }
 
 .remove-button {
   background: none;
   border: none;
-  color: #d9534f;
+  color: #ff8884;
   font-size: 1rem;
   cursor: pointer;
 }
@@ -44,8 +43,6 @@ body, html {
 .favorites-buttons {
   display: flex;
   gap: 8px;
-  margin-left: 250px;
-  margin-top: 20px;
 }
 
 .fav-button {
@@ -57,11 +54,11 @@ body, html {
 }
 
 .fav-button.add {
-  background: #28bf56;
+  background: linear-gradient(135deg, #b3d9f9, #acf47d);
   color: rgb(255, 255, 255);
 }
 
 .fav-button.remove {
-  background: #d9534f;
+  background: #ff8884;
   color: white;
 }

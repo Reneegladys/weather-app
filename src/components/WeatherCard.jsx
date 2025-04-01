@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import './WeatherCard.css';
 
-const WeatherCard = ({ weather }) => {
+const  WeatherCard = ({ weather, favorites, addCurrentLocationToFavorites, removeCurrentLocationFromFavorites }) => {
   const [currentDateTime, setCurrentDateTime] = useState("");
+
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -14,6 +15,7 @@ const WeatherCard = ({ weather }) => {
     return () => clearInterval(interval);
   }, []);
 
+
   return (
     <div className="weather-card">
       <h2>{weather.name}</h2>
@@ -24,6 +26,16 @@ const WeatherCard = ({ weather }) => {
       />
       <p>{weather.weather[0].description}</p>
       <p className="date-time">{currentDateTime}</p>
+      {weather && (
+        <div className="favorites-buttons">
+          <button onClick={() => addCurrentLocationToFavorites()} disabled={favorites.includes(weather.name)} className="fav-button add">
+            Add to Favorites
+          </button>
+          <button onClick={() => removeCurrentLocationFromFavorites()} disabled={!favorites.includes(weather.name)} className="fav-button remove">
+            Remove from Favorites
+          </button>
+        </div>
+      )}
     </div>
   );
 };
