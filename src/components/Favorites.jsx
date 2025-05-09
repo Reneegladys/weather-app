@@ -3,11 +3,13 @@ import { getWeatherByCity, getForecastByCoords } from "../services/WeatherServic
 import "./Favorites.css";
 
 const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
-  
   const handleFavoriteClick = async (city) => {
     try {
       const weatherData = await getWeatherByCity(city);
-      const forecastData = await getForecastByCoords(weatherData.coord.lat, weatherData.coord.lon);
+      const forecastData = await getForecastByCoords(
+        weatherData.coord.lat,
+        weatherData.coord.lon
+      );
       setWeather(weatherData);
       setForecast(forecastData);
     } catch (error) {
@@ -22,21 +24,31 @@ const Favorites = ({ favorites, setWeather, setForecast, setFavorites }) => {
   };
 
   return (
-      <>
+    <>
       <h3 className="favorites-title">Favorites</h3>
-      <ul className="favorites-list">
-        {favorites.map((city, index) => (
-          <li key={city} className="favorites-item">
-            <button onClick={() => handleFavoriteClick(city)} className="favorites-button">
-              {city}
-            </button>
-            <button onClick={() => removeFavorite(city)} className="remove-button">
-              ✖
-            </button>
-          </li>
-        ))}
-      </ul>
-      </>
+      {favorites.length === 0 ? (
+        <p>No favorites saved yet.</p>
+      ) : (
+        <ul className="favorites-list">
+          {favorites.map((city) => (
+            <li key={city} className="favorites-item">
+              <button
+                onClick={() => handleFavoriteClick(city)}
+                className="favorites-button"
+              >
+                {city}
+              </button>
+              <button
+                onClick={() => removeFavorite(city)}
+                className="remove-button"
+              >
+                ✖
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 
